@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import com.crypto.trading.model.enums.OrderStatus;
 import com.crypto.trading.model.enums.OrderType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.Data;
@@ -22,10 +24,12 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trading_pair_id", nullable = false)
+    @JsonIgnore
     private TradingPair tradingPair;
 
     @Enumerated(EnumType.STRING)
