@@ -1,4 +1,4 @@
-package com.crypto.trading.model;
+package com.crypto.trading.model.enums;
 
 public enum OrderType {
     BUY, SELL

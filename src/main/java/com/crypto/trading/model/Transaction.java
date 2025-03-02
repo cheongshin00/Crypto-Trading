@@ -19,24 +19,61 @@ public class Transaction {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "buy_order_id", nullable = false)
-    private Order buyOrder;
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sell_order_id", nullable = false)
-    private Order sellOrder;
-
-    @Column(nullable = false, precision = 24, scale = 8)
+    @Column(nullable = false, precision = 24, scale = 2)
     private BigDecimal price;
 
-    @Column(nullable = false, precision = 24, scale = 8)
+    @Column(nullable = false, precision = 24, scale = 2)
     private BigDecimal quantity;
 
     @Column(name = "executed_at")
     private LocalDateTime executedAt;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+    }
+
+    public LocalDateTime getExecutedAt() {
+        return executedAt;
+    }
+
+    public void setExecutedAt(LocalDateTime executedAt) {
+        this.executedAt = executedAt;
+    }
+
     @PrePersist
     protected void onCreate() {
         executedAt = LocalDateTime.now();
     }
+
 }

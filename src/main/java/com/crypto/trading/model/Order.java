@@ -3,6 +3,8 @@ package com.crypto.trading.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.crypto.trading.model.enums.OrderStatus;
+import com.crypto.trading.model.enums.OrderType;
 import jakarta.persistence.*;
 
 import lombok.Data;
@@ -30,10 +32,18 @@ public class Order {
     @Column(nullable = false)
     private OrderType type;
 
-    @Column(nullable = false, precision = 24, scale = 8)
+    public OrderType getType() {
+        return type;
+    }
+
+    public void setType(OrderType type) {
+        this.type = type;
+    }
+
+    @Column(nullable = false, precision = 24, scale = 2)
     private BigDecimal price;
 
-    @Column(nullable = false, precision = 24, scale = 8)
+    @Column(nullable = false, precision = 24, scale = 2)
     private BigDecimal quantity;
 
     @Column(name = "remaining_quantity", nullable = false, precision = 24, scale = 8)
@@ -59,4 +69,78 @@ public class Order {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public TradingPair getTradingPair() {
+        return tradingPair;
+    }
+
+    public void setTradingPair(TradingPair tradingPair) {
+        this.tradingPair = tradingPair;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getRemainingQuantity() {
+        return remainingQuantity;
+    }
+
+    public void setRemainingQuantity(BigDecimal remainingQuantity) {
+        this.remainingQuantity = remainingQuantity;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }

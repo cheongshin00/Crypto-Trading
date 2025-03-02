@@ -27,4 +27,36 @@ public class TradingPair {
     public String getPairSymbol() {
         return baseCurrency + quoteCurrency;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBaseCurrency() {
+        return baseCurrency;
+    }
+
+    public void setBaseCurrency(String baseCurrency) {
+        this.baseCurrency = baseCurrency;
+    }
+
+    public String getQuoteCurrency() {
+        return quoteCurrency;
+    }
+
+    public void setQuoteCurrency(String quoteCurrency) {
+        this.quoteCurrency = quoteCurrency;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 }
